@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function RangePicker() {
-  const [value, onChange] = useState(1);
+  const [value, onChange] = useState("1");
 
   return (
     <>

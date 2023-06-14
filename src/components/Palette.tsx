@@ -2,6 +2,7 @@ import { useState } from "react";
 
 export default function Palette() {
   const [palette, setPalette] = useState(["black", "red", "green", "yellow"]);
+  setPalette;
   return (
     <>
       <div className="ncp-row">
