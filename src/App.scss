@@ -1,0 +1,120 @@
+.ncp-head {
+    text-align: center;
+    font-weight: 900;
+    font-size: 42px;
+    margin: 40px 0;
+}
+
+.ncp-sub-head {
+    color: #7d7c83;
+    font-size: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.ncp-body-wrap {
+    max-width: 1000px;
+    margin: 50px auto 0;
+    box-shadow: rgba(0, 0, 0, 0.11) 0 0 0 1px;
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.ncp-left-col {
+    width: 480px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ncp-label {
+    margin-bottom: 10px;
+}
+
+.ncp-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.ncp-range-slider {
+    width: 100%;
+}
+
+.ncp-range-bubble {
+    width: 40px;
+    text-align: center;
+}
+
+.ncp-mt-20 {
+    margin-top: 20px;
+}
+.ncp-mt-auto{
+    margin-top: auto;
+}
+.ncp-palette-wrap{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #999999;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 46px;
+    flex: 1;
+}
+.ncp-palette{
+    flex: 1;
+    height: 46px;
+    background-color: #7d7c83;
+}
+.ncp-update-palette{
+    display: flex;
+    flex-direction: column;
+    width: 30px;
+    align-items:center;
+    justify-content: space-between;
+}
+.ncp-increase,.ncp-decrease{
+    box-shadow: inset #999999 0 0 0 1px;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+}
+.ncp-browse-btn{
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    width: 93%;
+    border: 1px solid #999999;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img{
+        width: 20px;
+        margin-left: 5px;
+    }
+}
+.ncp-export-btn{
+    background: #0066ff;
+    color: #fff;
+    padding: 12px 10px;
+    border-radius: 10px;
+    width: 93%;
+    border: none;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.ncp-right-col{
+    background-color: #dadada;
+    width: 100%;
+    height: 500px;
+    margin-left: 10px;
+}
