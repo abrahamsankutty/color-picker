@@ -1,8 +1,18 @@
 import "./App.scss";
 import RangePicker from "./components/Range-picker";
 import Palette from "./components/Palette";
-import image from "./assets/image.png";
+import browseIcon from "./assets/image.png";
+import Canvas from "./components/Canvas";
+import { useState } from "react";
+
 function App() {
+  const [image, setImage] = useState("");
+  function HandleFileUpload(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      setImage(URL.createObjectURL(event.target.files[0]));
+    }
+  }
+
   return (
     <>
       <h1 className="ncp-head">Color picker</h1>
@@ -15,13 +25,21 @@ function App() {
           <RangePicker></RangePicker>
           <p className="ncp-label ncp-mt-20">Palette</p>
           <Palette></Palette>
-          <button className="ncp-browse-btn ncp-mt-auto">
+          <label htmlFor="browse-img" className="ncp-browse-btn ncp-mt-auto">
             <span>Browse image</span>
-            <img src={image} alt="img" />
-          </button>
+            <input
+              className="ncp-file-upload"
+              id="browse-img"
+              type="file"
+              onChange={HandleFileUpload}
+            />
+            <img src={browseIcon} alt="img" />
+          </label>
           <button className="ncp-export-btn ncp-mt-20">Export palette</button>
         </div>
-        <div className="ncp-right-col"></div>
+        <div className="ncp-right-col">
+          <Canvas path={image}></Canvas>
+        </div>
       </div>
     </>
   );
