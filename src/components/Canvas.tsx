@@ -1,6 +1,7 @@
 import { useEffect } from "react";
-
+import Draggable from "react-draggable";
 export default function Canvas(data: any) {
+  const dragHandlers = {};
   useEffect(() => {
     const canvas: any = document.getElementById("mycanvas");
     const ctx = canvas.getContext("2d");
@@ -13,12 +14,29 @@ export default function Canvas(data: any) {
   }, [data]);
   return (
     <>
-      <canvas
-        id="mycanvas"
-        className="ncp-mycanvas"
-        width={500}
-        height={500}
-      ></canvas>
+      <div
+        style={{
+          height: "500px",
+          width: "100%",
+          position: "relative",
+        }}
+      >
+        <Draggable bounds="parent" {...dragHandlers}>
+          <div
+            className="ncp-color-picker"
+            style={{
+              top: "0px",
+              left: "0px",
+            }}
+          ></div>
+        </Draggable>
+        <canvas
+          id="mycanvas"
+          className="ncp-mycanvas"
+          width={500}
+          height={500}
+        ></canvas>
+      </div>
     </>
   );
 }
