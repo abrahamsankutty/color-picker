@@ -16,6 +16,7 @@ export default function Canvas(data: any) {
 
     image.onload = () => {
       ctx.drawImage(image, 0, 0, 500, 500);
+      setBGColor(ctx.getImageData(13, 13, 3, 3).data);
     };
   }, [data]);
 

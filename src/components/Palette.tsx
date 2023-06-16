@@ -1,4 +1,5 @@
 import { useState } from "react";
+import RgbConvertService from "../services/rgbConvertService";
 
 export default function Palette() {
   const [palette, setPalette] = useState(["black", "red", "green", "yellow"]);
@@ -7,15 +8,6 @@ export default function Palette() {
 
   const getRgb = () => Math.floor(Math.random() * 256);
 
-  const rgbToHex = (r: any, g: any, b: any) =>
-    "#" +
-    [r, g, b]
-      .map((x) => {
-        const hex = x.toString(16);
-        return hex.length === 1 ? "0" + hex : hex;
-      })
-      .join("");
-
   const handleGenerate = () => {
     const color = {
       r: getRgb(),
@@ -23,7 +15,7 @@ export default function Palette() {
       b: getRgb(),
     };
 
-    setColor(rgbToHex(color.r, color.g, color.b));
+    setColor(RgbConvertService(color.r, color.g, color.b));
   };
 
   function HandleIncrease() {
