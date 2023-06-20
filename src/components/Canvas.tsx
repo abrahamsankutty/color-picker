@@ -25,6 +25,7 @@ export default function Canvas({ palette, setPalette, path }: any) {
           return (
             <ColorPicker
               key={index}
+              value={value}
               palette={palette}
               setPalette={setPalette}
               index={index}
