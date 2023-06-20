@@ -14,6 +14,12 @@ function App() {
     }
   }
 
+  function copyToClipboard(): void {
+    navigator.clipboard.writeText(palette.toString());
+
+    alert("Copied the text: " + palette);
+  }
+
   return (
     <>
       <h1 className="ncp-head">Color picker</h1>
@@ -36,7 +42,12 @@ function App() {
             />
             <img src={browseIcon} alt="img" />
           </label>
-          <button className="ncp-export-btn ncp-mt-20">Export palette</button>
+          <button
+            className="ncp-export-btn ncp-mt-20"
+            onClick={copyToClipboard}
+          >
+            Export palette
+          </button>
         </div>
         <div className="ncp-right-col">
           <Canvas
