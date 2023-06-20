@@ -1,39 +1,18 @@
-import { useState } from "react";
-import RgbConvertService from "../services/rgbConvertService";
-
-export default function Palette() {
-  const [palette, setPalette] = useState(["black", "red", "green", "yellow"]);
-
-  const [color, setColor] = useState("blue");
-
-  const getRgb = () => Math.floor(Math.random() * 256);
-
-  const handleGenerate = () => {
-    const color = {
-      r: getRgb(),
-      g: getRgb(),
-      b: getRgb(),
-    };
-
-    setColor(RgbConvertService(color.r, color.g, color.b));
-  };
-
+export default function Palette({ palette, setPalette }: any) {
   function HandleIncrease() {
-    handleGenerate();
-    console.log(color);
-    setPalette((palette) => [...palette, color]);
+    setPalette(() => [...palette, ""]);
   }
   function HandleDecrease() {
-    setPalette((palette) => palette.slice(0, -1));
+    setPalette(() => palette.slice(0, -1));
   }
   return (
     <>
       <div className="ncp-row">
         <div className="ncp-palette-wrap">
-          {palette.map((palette) => {
+          {palette.map((palette: any, index: any) => {
             return (
               <div
-                key={palette}
+                key={index + palette}
                 className="ncp-palette"
                 style={{
                   backgroundColor: palette,

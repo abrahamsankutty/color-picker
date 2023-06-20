@@ -1,30 +1,15 @@
-import { useEffect, useState } from "react";
-import Draggable from "react-draggable";
-export default function Canvas(data: any) {
-  const [deltaPosition, setDeltaPosition] = useState([0, 0]);
-  const [bgColor, setBGColor] = useState([255, 255, 255, 255]);
-  const dragHandlers = {};
+import ColorPicker from "./Color-picker";
+export default function Canvas({ palette, setPalette, path }: any) {
   const canvas: any = document.getElementById("mycanvas");
   const ctx = canvas?.getContext("2d");
+  const image = new Image();
+  image.setAttribute("crossOrigin", "");
+  image.src =
+    path ||
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0hMOVm7P0iTv95Nr_QAui9hJeADf8pS1AGMDqktNZ&s";
 
-  useEffect(() => {
-    const canvas: any = document.getElementById("mycanvas");
-    const ctx = canvas?.getContext("2d");
-    const image = new Image();
-    image.setAttribute("crossOrigin", "");
-    image.src = data.path || "https://picsum.photos/200";
-
-    image.onload = () => {
-      ctx.drawImage(image, 0, 0, 500, 500);
-      setBGColor(ctx.getImageData(13, 13, 3, 3).data);
-    };
-  }, [data]);
-
-  const handleDrag = (e: any, ui: any) => {
-    setDeltaPosition([ui.x, ui.y]);
-    e;
-    deltaPosition;
-    setBGColor(ctx.getImageData(ui.x + 13, ui.y + 13, 3, 3).data);
+  image.onload = () => {
+    ctx.drawImage(image, 0, 0, 500, 500);
   };
 
   return (
@@ -36,16 +21,17 @@ export default function Canvas(data: any) {
           position: "relative",
         }}
       >
-        <Draggable bounds="parent" onDrag={handleDrag} {...dragHandlers}>
-          <div
-            className="ncp-color-picker"
-            style={{
-              top: "0px",
-              left: "0px",
-              backgroundColor: `rgb(${bgColor[0]},${bgColor[1]},${bgColor[2]})`,
-            }}
-          ></div>
-        </Draggable>
+        {palette.map((value: any, index: any) => {
+          return (
+            <ColorPicker
+              key={value + index}
+              palette={palette}
+              setPalette={setPalette}
+              index={index}
+            ></ColorPicker>
+          );
+        })}
+
         <canvas
           id="mycanvas"
           className="ncp-mycanvas"

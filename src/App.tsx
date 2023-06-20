@@ -6,6 +6,7 @@ import Canvas from "./components/Canvas";
 import { useState } from "react";
 
 function App() {
+  const [palette, setPalette] = useState([]);
   const [image, setImage] = useState("");
   function HandleFileUpload(event: any) {
     if (event.target.files && event.target.files[0]) {
@@ -22,9 +23,9 @@ function App() {
       <div className="ncp-body-wrap ncp-row">
         <div className="ncp-left-col">
           <p className="ncp-label">Picked pallets</p>
-          <RangePicker></RangePicker>
+          <RangePicker palette={palette} setPalette={setPalette}></RangePicker>
           <p className="ncp-label ncp-mt-20">Palette</p>
-          <Palette></Palette>
+          <Palette palette={palette} setPalette={setPalette}></Palette>
           <label htmlFor="browse-img" className="ncp-browse-btn ncp-mt-auto">
             <span>Browse image</span>
             <input
@@ -38,7 +39,11 @@ function App() {
           <button className="ncp-export-btn ncp-mt-20">Export palette</button>
         </div>
         <div className="ncp-right-col">
-          <Canvas path={image}></Canvas>
+          <Canvas
+            path={image}
+            palette={palette}
+            setPalette={setPalette}
+          ></Canvas>
         </div>
       </div>
     </>
